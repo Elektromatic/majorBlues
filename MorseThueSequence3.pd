@@ -1,0 +1,58 @@
+#N canvas 893 478 450 395 12;
+#X floatatom 257 54 5 0 0 1 base_10 - -, f 5;
+#X floatatom 257 163 5 0 0 1 LSD_base_3 - -, f 5;
+#X floatatom 211 163 5 0 0 0 - - -, f 5;
+#X floatatom 164 163 5 0 0 0 - - -, f 5;
+#X floatatom 120 163 5 0 0 0 MSD - -, f 5;
+#X obj 257 32 inlet;
+#X obj 102 276 outlet;
+#X obj 193 191 +;
+#X obj 146 214 +;
+#X obj 102 238 +;
+#X floatatom 75 257 3 0 0 0 - - -, f 3;
+#X obj 211 76 / 3;
+#X obj 164 100 / 3;
+#X obj 120 124 / 3;
+#X obj 120 145 mod 3;
+#X obj 165 145 mod 3;
+#X obj 211 145 mod 3;
+#X obj 257 145 mod 3;
+#X obj 102 257 mod 3;
+#X text 151 275 outputs number 0-2;
+#X text 142 316 4 digits of base 3;
+#X text 121 330 3*3*3*3 = 81 long sequence;
+#N canvas 798 113 632 468 copyrightInfo 0;
+#X text 74 306 j.raski@gmail.com;
+#X text 43 19 This program creates generative music on an electronic
+synthesiser. Copyright (C) 2019 Jerry Z. Raski This program is free
+software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation \, either version 3 of the License \, or (at your option)
+any later version. This program is distributed in the hope that it
+will be useful \, but WITHOUT ANY WARRANTY \; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+the GNU General Public License for more details. You should have received
+a copy of the GNU General Public License along with this program. If
+not \, see <https://www.gnu.org/licenses/>.;
+#X restore 60 356 pd copyrightInfo;
+#X connect 0 0 11 0;
+#X connect 0 0 17 0;
+#X connect 1 0 7 0;
+#X connect 2 0 7 1;
+#X connect 3 0 8 1;
+#X connect 4 0 9 1;
+#X connect 5 0 0 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 9 0 18 0;
+#X connect 11 0 12 0;
+#X connect 11 0 16 0;
+#X connect 12 0 13 0;
+#X connect 12 0 15 0;
+#X connect 13 0 14 0;
+#X connect 14 0 4 0;
+#X connect 15 0 3 0;
+#X connect 16 0 2 0;
+#X connect 17 0 1 0;
+#X connect 18 0 6 0;

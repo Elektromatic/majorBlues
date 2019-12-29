@@ -1,0 +1,539 @@
+#N canvas 1027 20 651 721 12;
+#X obj 194 236 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 22 632 loadbang;
+#X obj 22 672 print -n;
+#X obj 194 254 f 0;
+#X obj 194 274 + 1;
+#X floatatom 167 274 3 0 0 0 - - -, f 3;
+#N canvas 798 113 632 468 copyrightInfo 0;
+#X text 74 306 j.raski@gmail.com;
+#X text 43 19 This program creates generative music on an electronic
+synthesiser. Copyright (C) 2019 Jerry Z. Raski This program is free
+software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation \, either version 3 of the License \, or (at your option)
+any later version. This program is distributed in the hope that it
+will be useful \, but WITHOUT ANY WARRANTY \; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+the GNU General Public License for more details. You should have received
+a copy of the GNU General Public License along with this program. If
+not \, see <https://www.gnu.org/licenses/>.;
+#X restore 89 673 pd copyrightInfo;
+#X floatatom 122 477 3 0 128 0 value - -, f 3;
+#X obj 243 235 r trk11-hits;
+#X obj 194 195 euclidRhythm trk11;
+#X floatatom 179 455 3 0 128 0 - - -, f 3;
+#X obj 194 137 midiClockIn;
+#X obj 233 33 bng 30 250 50 0 reset go Go -22 7 0 10 -204786 -1 -1
+;
+#X obj 233 86 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X floatatom 268 156 5 0 0 1 bpm - -, f 5;
+#X obj 268 174 s bpm;
+#X obj 360 233 spigot;
+#N canvas 51 54 708 780 cruft 0;
+#X msg 98 71 0;
+#X obj 40 93 array set scale11;
+#X obj 40 21 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 107 31 C locrian;
+#X msg 40 49 0 1 3 5 6 8 10 12 13 15 17 18 20 22 24 25;
+#X msg 99 169 0;
+#X obj 41 191 array set scale11;
+#X obj 41 119 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 108 129 C dorian;
+#X msg 41 147 0 2 3 5 7 9 10 12 14 15 17 19 21 22 24 0;
+#X msg 97 266 0;
+#X obj 39 288 array set scale11;
+#X obj 39 216 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 106 226 C aeolian;
+#X msg 39 244 0 2 3 5 7 8 10 12 14 15 17 19 20 22 24 0;
+#X msg 97 366 0;
+#X obj 39 388 array set scale11;
+#X obj 39 316 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 106 326 C phrygian;
+#X msg 39 344 0 1 3 5 7 8 10 12 13 15 17 19 20 22 24 25;
+#X msg 97 461 0;
+#X obj 39 480 array set scale11;
+#X obj 39 414 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 106 424 minor G pentatonic;
+#X msg 39 442 7 10 12 14 17 19 22 24 26 29 31 7 10 12 14 17;
+#X text 113 510 G7 b13 pentatonic;
+#X msg 46 528 -5 -1 2 3 5 7 11 14 15 17 19 -5 -1 2 3 5;
+#X text 109 568 minor G pentatonic;
+#X msg 42 586 7 10 12 14 17 19 22 24 26 29 31 7 10 12 14 17;
+#X msg 85 671 0;
+#X obj 27 690 array set scale11;
+#X obj 27 631 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 94 634 null scale;
+#X msg 27 652 -60 -60 -60 -60 -60 -60 -60 -60 -60 -60 -60 -60 -60 -60
+-60 -60, f 63;
+#X msg 404 119 0;
+#X obj 346 138 array set scale11;
+#X obj 346 79 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 412 82 F dorian;
+#X msg 346 100 5 7 8 10 12 14 15 17 19 20 22 24 26 27 29 5;
+#X msg 349 189 7 11 14 15 17 7 11 14 15 17 7 11 14 15 17 7;
+#X text 416 171 G7 b13;
+#X obj 441 225 r bpm;
+#X floatatom 441 263 5 0 0 1 ms_per_1/64th_note - -, f 5;
+#X text 497 226 /4 is 16th's;
+#X obj 441 244 expr 1000*($f1/60)/16;
+#N canvas 1235 129 455 412 Length11 0;
+#X obj 168 87 f 0;
+#X obj 168 106 + 1;
+#X floatatom 134 108 3 0 0 0 - - -, f 3;
+#X obj 198 87 mod 80;
+#X obj 168 30 inlet;
+#X floatatom 129 144 3 0 0 0 - - -, f 3;
+#X obj 156 244 outlet;
+#X obj 156 126 MorseThueSequence3;
+#X obj 156 145 + 1;
+#N canvas 798 113 632 468 copyrightInfo 0;
+#X text 74 306 j.raski@gmail.com;
+#X text 43 19 This program creates generative music on an electronic
+synthesiser. Copyright (C) 2019 Jerry Z. Raski This program is free
+software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation \, either version 3 of the License \, or (at your option)
+any later version. This program is distributed in the hope that it
+will be useful \, but WITHOUT ANY WARRANTY \; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+the GNU General Public License for more details. You should have received
+a copy of the GNU General Public License along with this program. If
+not \, see <https://www.gnu.org/licenses/>.;
+#X restore 62 309 pd copyrightInfo;
+#X msg 186 68 0;
+#X floatatom 101 243 5 0 0 1 ms - -, f 5;
+#X obj 185 145 r bpm;
+#X floatatom 185 183 5 0 0 1 ms_per_1/16th_note - -, f 5;
+#X text 241 146 /4 is 16th's;
+#X floatatom 103 221 5 0 0 0 - - -, f 5;
+#X obj 156 224 +;
+#X obj 156 205 *;
+#X floatatom 96 172 5 0 0 0 - - -, f 5;
+#X obj 185 164 expr 1000*($f1/60)/8;
+#X obj 186 49 r reset;
+#X connect 0 0 1 0;
+#X connect 0 0 2 0;
+#X connect 0 0 7 0;
+#X connect 1 0 3 0;
+#X connect 3 0 0 1;
+#X connect 4 0 0 0;
+#X connect 7 0 5 0;
+#X connect 7 0 8 0;
+#X connect 8 0 17 0;
+#X connect 10 0 0 1;
+#X connect 12 0 19 0;
+#X connect 13 0 16 1;
+#X connect 16 0 11 0;
+#X connect 16 0 6 0;
+#X connect 17 0 15 0;
+#X connect 17 0 16 0;
+#X connect 18 0 17 1;
+#X connect 19 0 13 0;
+#X connect 20 0 10 0;
+#X restore 443 299 pd Length11;
+#X msg 575 412 0;
+#X obj 517 431 array set scale11;
+#X obj 517 371 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 517 393 5 8 10 12 15 5;
+#X text 540 368 Fm pentatonic;
+#X connect 0 0 1 1;
+#X connect 2 0 4 0;
+#X connect 2 0 0 0;
+#X connect 4 0 1 0;
+#X connect 5 0 6 1;
+#X connect 7 0 9 0;
+#X connect 7 0 5 0;
+#X connect 9 0 6 0;
+#X connect 10 0 11 1;
+#X connect 12 0 14 0;
+#X connect 12 0 10 0;
+#X connect 14 0 11 0;
+#X connect 15 0 16 1;
+#X connect 17 0 19 0;
+#X connect 17 0 15 0;
+#X connect 19 0 16 0;
+#X connect 20 0 21 1;
+#X connect 22 0 24 0;
+#X connect 22 0 20 0;
+#X connect 24 0 21 0;
+#X connect 29 0 30 1;
+#X connect 31 0 33 0;
+#X connect 31 0 29 0;
+#X connect 33 0 30 0;
+#X connect 34 0 35 1;
+#X connect 36 0 38 0;
+#X connect 36 0 34 0;
+#X connect 38 0 35 0;
+#X connect 41 0 44 0;
+#X connect 44 0 42 0;
+#X connect 46 0 47 1;
+#X connect 48 0 49 0;
+#X connect 48 0 46 0;
+#X connect 49 0 47 0;
+#X restore 21 693 pd cruft;
+#X obj 371 274 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 332 292 spigot;
+#N canvas 1054 49 707 587 pickTheScale 0;
+#X obj 138 88 f 0;
+#X obj 138 109 + 1;
+#X floatatom 111 110 3 0 0 0 - - -, f 3;
+#X obj 169 108 sel 0;
+#X obj 169 133 f 0;
+#X obj 169 154 + 1;
+#X floatatom 142 155 3 0 0 0 half_bars - -, f 3;
+#X msg 156 68 0;
+#X msg 149 443 0;
+#X obj 91 462 array set scale11;
+#X obj 91 402 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 413 442 0;
+#X obj 355 461 array set scale11;
+#X obj 355 401 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 568 251 0;
+#X msg 436 252 1;
+#X obj 138 30 inlet;
+#X obj 436 280 outlet;
+#X text 209 88 was 16;
+#X text 249 132 was 12;
+#X obj 168 88 mod 8;
+#X obj 199 133 mod 24;
+#X obj 91 321 sel 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
+20 21 22 23, f 66;
+#X obj 222 165 sel 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
+20 21 22 23, f 66;
+#X text 348 149 decide not to play half bar;
+#X text 185 303 pick which scale on which half bar;
+#X msg 282 443 0;
+#X obj 224 462 array set scale11;
+#X obj 224 402 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 178 402 Bb7 #9;
+#X text 260 401 Cm pentatonic;
+#X msg 541 441 0;
+#X obj 483 461 array set scale11;
+#X obj 483 402 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 444 402 F7 #9;
+#X msg 224 424 10 13 14 17 20 13;
+#X msg 355 423 0 3 5 7 10 12;
+#X msg 91 424 10 13 15 16 17 20;
+#X text 24 403 Bbm blues;
+#N canvas 798 113 632 468 copyrightInfo 0;
+#X text 74 306 j.raski@gmail.com;
+#X text 43 19 This program creates generative music on an electronic
+synthesiser. Copyright (C) 2019 Jerry Z. Raski This program is free
+software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation \, either version 3 of the License \, or (at your option)
+any later version. This program is distributed in the hope that it
+will be useful \, but WITHOUT ANY WARRANTY \; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+the GNU General Public License for more details. You should have received
+a copy of the GNU General Public License along with this program. If
+not \, see <https://www.gnu.org/licenses/>.;
+#X restore 37 545 pd copyrightInfo;
+#X obj 156 49 r reset;
+#X msg 483 424 5 9 12 15 20 5;
+#X connect 0 0 1 0;
+#X connect 0 0 2 0;
+#X connect 0 0 3 0;
+#X connect 1 0 0 1;
+#X connect 1 0 20 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 4 0 6 0;
+#X connect 4 0 23 0;
+#X connect 4 0 22 0;
+#X connect 5 0 4 1;
+#X connect 5 0 21 0;
+#X connect 7 0 0 1;
+#X connect 7 0 4 1;
+#X connect 8 0 9 1;
+#X connect 10 0 37 0;
+#X connect 10 0 8 0;
+#X connect 11 0 12 1;
+#X connect 13 0 36 0;
+#X connect 13 0 11 0;
+#X connect 14 0 17 0;
+#X connect 15 0 17 0;
+#X connect 16 0 0 0;
+#X connect 20 0 0 1;
+#X connect 21 0 4 1;
+#X connect 22 0 10 0;
+#X connect 22 1 10 0;
+#X connect 22 2 10 0;
+#X connect 22 3 10 0;
+#X connect 22 7 28 0;
+#X connect 22 8 10 0;
+#X connect 22 9 10 0;
+#X connect 22 10 10 0;
+#X connect 22 11 10 0;
+#X connect 22 16 13 0;
+#X connect 22 17 13 0;
+#X connect 22 18 33 0;
+#X connect 22 19 33 0;
+#X connect 22 20 10 0;
+#X connect 22 23 33 0;
+#X connect 23 0 15 0;
+#X connect 23 1 15 0;
+#X connect 23 2 15 0;
+#X connect 23 3 15 0;
+#X connect 23 4 14 0;
+#X connect 23 5 14 0;
+#X connect 23 6 14 0;
+#X connect 23 7 15 0;
+#X connect 23 8 15 0;
+#X connect 23 9 15 0;
+#X connect 23 10 15 0;
+#X connect 23 11 15 0;
+#X connect 23 12 14 0;
+#X connect 23 13 14 0;
+#X connect 23 14 14 0;
+#X connect 23 15 14 0;
+#X connect 23 16 15 0;
+#X connect 23 17 15 0;
+#X connect 23 18 15 0;
+#X connect 23 19 15 0;
+#X connect 23 20 15 0;
+#X connect 23 21 14 0;
+#X connect 23 22 14 0;
+#X connect 23 23 15 0;
+#X connect 26 0 27 1;
+#X connect 28 0 35 0;
+#X connect 28 0 26 0;
+#X connect 31 0 32 1;
+#X connect 33 0 41 0;
+#X connect 33 0 31 0;
+#X connect 35 0 27 0;
+#X connect 36 0 12 0;
+#X connect 37 0 9 0;
+#X connect 40 0 7 0;
+#X connect 41 0 32 0;
+#X restore 371 255 pd pickTheScale;
+#X text 229 535 to 0-coast;
+#X obj 315 369 f 0;
+#X obj 315 388 + 1;
+#X floatatom 277 467 3 0 0 0 - - -, f 3;
+#X floatatom 275 388 5 0 0 0 - - -, f 5;
+#X floatatom 277 428 3 0 0 0 - - -, f 3;
+#X obj 303 427 tabread scale11;
+#X obj 332 311 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 303 407 MorseThueSequence6;
+#X obj 345 369 mod 1295;
+#X obj 225 254 mod;
+#X obj 22 612 array define -k scale11 6;
+#A 0 10 13 15 16 17 20;
+#X text 42 594 6 possible tones;
+#X msg 212 235 0;
+#X obj 303 505 makenote;
+#X msg 333 350 0;
+#N canvas 1121 332 421 417 Velocity 0;
+#X obj 170 92 f 0;
+#X obj 170 113 + 1;
+#X floatatom 143 114 3 0 0 0 - - -, f 3;
+#X obj 200 92 mod 16;
+#X msg 188 72 0;
+#X obj 170 33 inlet;
+#X obj 159 203 outlet;
+#X floatatom 132 204 3 0 0 0 - - -, f 3;
+#X msg 106 316 0;
+#X obj 45 274 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 45 253 loadbang;
+#X text 78 280 accents on off-beats;
+#X msg 45 295 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array Accent 16 float 3;
+#A 0 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1;
+#X coords 0 1.5 16 0 100 70 2 0 0;
+#X restore 282 259 graph;
+#X obj 159 143 tabread Accent;
+#X obj 45 336 array set Accent;
+#X obj 188 53 r reset;
+#X obj 159 163 * 40;
+#X obj 159 182 + 80;
+#N canvas 798 113 632 468 copyrightInfo 0;
+#X text 74 306 j.raski@gmail.com;
+#X text 43 19 This program creates generative music on an electronic
+synthesiser. Copyright (C) 2019 Jerry Z. Raski This program is free
+software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation \, either version 3 of the License \, or (at your option)
+any later version. This program is distributed in the hope that it
+will be useful \, but WITHOUT ANY WARRANTY \; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+the GNU General Public License for more details. You should have received
+a copy of the GNU General Public License along with this program. If
+not \, see <https://www.gnu.org/licenses/>.;
+#X restore 50 373 pd copyrightInfo;
+#X connect 0 0 1 0;
+#X connect 0 0 2 0;
+#X connect 0 0 14 0;
+#X connect 1 0 0 1;
+#X connect 1 0 3 0;
+#X connect 3 0 0 1;
+#X connect 4 0 0 1;
+#X connect 5 0 0 0;
+#X connect 8 0 15 1;
+#X connect 9 0 8 0;
+#X connect 9 0 12 0;
+#X connect 10 0 9 0;
+#X connect 12 0 15 0;
+#X connect 14 0 17 0;
+#X connect 16 0 4 0;
+#X connect 17 0 18 0;
+#X connect 18 0 6 0;
+#X connect 18 0 7 0;
+#X restore 361 447 pd Velocity;
+#X obj 303 535 noteout 11;
+#X obj 303 447 + 60;
+#N canvas 752 32 368 225 startStop 0;
+#X obj 201 39 inlet;
+#X obj 234 60 bng 15 250 50 0 empty stop empty 17 7 0 10 -262144 -1
+-1;
+#X obj 201 125 outlet;
+#X text 167 60 stop bang;
+#X text 127 38 start bang;
+#X obj 201 104 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 201 79 f 1;
+#X obj 234 79 f 0;
+#X text 50 80 start on a start bang;
+#X text 64 104 stop on a stop bang;
+#N canvas 798 113 632 468 copyrightInfo 0;
+#X text 74 306 j.raski@gmail.com;
+#X text 43 19 This program creates generative music on an electronic
+synthesiser. Copyright (C) 2019 Jerry Z. Raski This program is free
+software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation \, either version 3 of the License \, or (at your option)
+any later version. This program is distributed in the hope that it
+will be useful \, but WITHOUT ANY WARRANTY \; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+the GNU General Public License for more details. You should have received
+a copy of the GNU General Public License along with this program. If
+not \, see <https://www.gnu.org/licenses/>.;
+#X restore 45 177 pd copyrightInfo;
+#X connect 0 0 6 0;
+#X connect 1 0 7 0;
+#X connect 5 0 2 0;
+#X connect 6 0 5 0;
+#X connect 7 0 5 0;
+#X restore 233 67 pd startStop;
+#X obj 194 174 spigot;
+#X obj 367 467 r bpm;
+#X floatatom 367 505 5 0 0 1 ms_per_1/32th_note - -, f 5;
+#X text 423 468 /4 is 16th's;
+#X obj 367 486 expr 1000*($f1/60)/8;
+#N canvas 1281 85 341 300 Portamento 0;
+#X obj 144 87 f 0;
+#X obj 144 106 + 1;
+#X floatatom 110 108 3 0 0 0 - - -, f 3;
+#X obj 174 87 mod 80;
+#X obj 144 28 inlet;
+#X floatatom 105 144 3 0 0 0 - - -, f 3;
+#X obj 132 164 outlet;
+#X obj 132 126 MorseThueSequence3;
+#X obj 132 145 + 1;
+#N canvas 798 113 632 468 copyrightInfo 0;
+#X text 74 306 j.raski@gmail.com;
+#X text 43 19 This program creates generative music on an electronic
+synthesiser. Copyright (C) 2019 Jerry Z. Raski This program is free
+software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation \, either version 3 of the License \, or (at your option)
+any later version. This program is distributed in the hope that it
+will be useful \, but WITHOUT ANY WARRANTY \; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+the GNU General Public License for more details. You should have received
+a copy of the GNU General Public License along with this program. If
+not \, see <https://www.gnu.org/licenses/>.;
+#X restore 53 213 pd copyrightInfo;
+#X msg 162 68 0;
+#X obj 162 49 r reset;
+#X connect 0 0 1 0;
+#X connect 0 0 2 0;
+#X connect 0 0 7 0;
+#X connect 1 0 3 0;
+#X connect 3 0 0 1;
+#X connect 4 0 0 0;
+#X connect 7 0 5 0;
+#X connect 7 0 8 0;
+#X connect 8 0 6 0;
+#X connect 10 0 0 1;
+#X connect 11 0 10 0;
+#X restore 148 435 pd Portamento;
+#X obj 212 216 r reset;
+#X obj 333 331 r reset;
+#X obj 287 561 noteout 12;
+#X text 206 562 to digitone;
+#X msg 22 652 majorBlues: Fractal melodies with Euclidean rhythms.
+Copyright (c) 2019 Jerry Z Raski, f 86;
+#X obj 149 476 ctlout 71 11;
+#X obj 148 455 * 0;
+#X text 67 435 off for now;
+#X connect 0 0 3 0;
+#X connect 1 0 51 0;
+#X connect 3 0 4 0;
+#X connect 3 0 5 0;
+#X connect 3 0 19 0;
+#X connect 4 0 31 0;
+#X connect 8 0 31 1;
+#X connect 9 0 0 0;
+#X connect 10 0 53 1;
+#X connect 11 0 41 0;
+#X connect 11 1 16 0;
+#X connect 11 2 14 0;
+#X connect 12 0 40 0;
+#X connect 13 0 16 1;
+#X connect 13 0 41 1;
+#X connect 14 0 15 0;
+#X connect 16 0 20 0;
+#X connect 16 0 37 0;
+#X connect 18 0 19 1;
+#X connect 19 0 28 0;
+#X connect 20 0 18 0;
+#X connect 22 0 23 0;
+#X connect 22 0 25 0;
+#X connect 22 0 29 0;
+#X connect 23 0 30 0;
+#X connect 27 0 39 0;
+#X connect 28 0 22 0;
+#X connect 28 0 46 0;
+#X connect 29 0 26 0;
+#X connect 29 0 27 0;
+#X connect 30 0 22 1;
+#X connect 31 0 3 1;
+#X connect 34 0 3 1;
+#X connect 35 0 38 0;
+#X connect 35 0 49 0;
+#X connect 35 1 38 1;
+#X connect 35 1 49 1;
+#X connect 36 0 22 1;
+#X connect 37 0 35 1;
+#X connect 39 0 24 0;
+#X connect 39 0 35 0;
+#X connect 40 0 13 0;
+#X connect 41 0 9 0;
+#X connect 42 0 45 0;
+#X connect 45 0 43 0;
+#X connect 45 0 35 2;
+#X connect 47 0 34 0;
+#X connect 48 0 36 0;
+#X connect 51 0 2 0;
+#X connect 53 0 7 0;
+#X connect 53 0 52 0;
